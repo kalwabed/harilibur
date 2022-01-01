@@ -38,13 +38,13 @@ const ArrowLeft = () => (
   </IconSvg>
 )
 
-const Navigation = ({ type }: { type: 'now' | '2022' }) => {
+const Navigation = ({ type }: { type: 'now' | 'next' }) => {
   const ButtonSelected = () => {
     if (type === 'now') {
       return (
-        <Link href="/2022" passHref>
+        <Link href={`/${new Date().getFullYear() + 1}`} passHref>
           <Button>
-            <span style={{ marginRight: '.3rem' }}>Tahun 2022</span>
+            <span style={{ marginRight: '.3rem' }}>Tahun {new Date().getFullYear() + 1}</span>
             <ArrowRight />
           </Button>
         </Link>

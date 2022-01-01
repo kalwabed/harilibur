@@ -14,7 +14,7 @@ const UpcomingHolidays: React.FC<{ upcomings: APIResult[] }> = ({ upcomings }) =
         </Card>
       )}
       {filteredHolidays?.map(holiday => (
-        <Card key={holiday.holiday_name} css={{ color: isAfterEvent(holiday.holiday_date) ? '$gray11' : '$gray12' }}>
+        <Card key={holiday.holiday_date} css={{ color: isAfterEvent(holiday.holiday_date) ? '$gray11' : '$gray12' }}>
           <CardSider>
             <DateDay>{toDateDay(holiday.holiday_date)}</DateDay>
             <DateNumber>{toDateNumber(holiday.holiday_date)}</DateNumber>

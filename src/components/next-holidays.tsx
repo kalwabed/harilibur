@@ -19,7 +19,7 @@ const NextHolidays: React.FC<{ nextMonths: APIResult[] }> = ({ nextMonths }) => 
     <GridWrapper css={{ margin: '2rem auto' }}>
       <SectionHeader>Bulan Depan</SectionHeader>
       {filteredHolidays?.map(holiday => (
-        <MonthWrapper key={holiday.holiday_name}>
+        <MonthWrapper key={holiday.holiday_date}>
           <Month>{toMonth(holiday.holiday_date)}</Month>
           <Card>
             <CardSider>

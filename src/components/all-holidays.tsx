@@ -1,5 +1,6 @@
 import { toDateDay, toDateNumber, toMonth } from 'src/utils/date-formatter'
 import { APIResult } from 'src/utils/fetcher'
+import { styled } from 'stitches.config'
 import {
   Card,
   CardBody,
@@ -12,12 +13,17 @@ import {
   SectionHeader
 } from './shared/Card'
 
+const NotAvailable = styled('p', {
+  fontSize: 'small',
+  color: '$gray11'
+})
+
 const AllHolidays = ({ holidays }: { holidays: APIResult[] }) => {
   const filteredHolidays = holidays.filter(holiday => holiday.is_national_holiday)
 
   const holidayResult: { [month: string]: APIResult[] } = {}
 
-  filteredHolidays.map(holiday => {
+  filteredHolidays.forEach(holiday => {
     const month = toMonth(holiday.holiday_date)
 
     // @ts-ignore
@@ -26,7 +32,9 @@ const AllHolidays = ({ holidays }: { holidays: APIResult[] }) => {
 
   return (
     <GridWrapper css={{ margin: '2rem auto' }}>
-      <SectionHeader>2022</SectionHeader>
+      <SectionHeader>{new Date().getFullYear() + 1}</SectionHeader>
+      {Object.keys(holidayResult).length === 0 && <NotAvailable>Data hari libur belum tersedia.</NotAvailable>}
+
       {Object.keys(holidayResult)?.map((month, index) => {
         return (
           <MonthWrapper key={month}>
