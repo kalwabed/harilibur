@@ -61,5 +61,5 @@ export const Month = styled('h3', {
 })
 
 export const MonthWrapper = styled('div', {
-  marginTop: '.3rem'
+  marginBottom: '1.3rem'
 })

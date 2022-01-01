@@ -1,6 +1,7 @@
-import { isAfterEvent, toDateDay, toDateNumber } from 'src/utils/date-formatter'
+import { isAfterEvent } from 'src/utils/date-formatter'
 import { APIResult } from 'src/utils/fetcher'
-import { Card, CardBody, CardSider, DateDay, DateNumber, GridWrapper, SectionHeader } from './shared/Card'
+import CardPreview from './shared/card'
+import { Card, CardBody, GridWrapper, SectionHeader } from './shared/card-style'
 
 const UpcomingHolidays: React.FC<{ upcomings: APIResult[] }> = ({ upcomings }) => {
   const filteredHolidays = upcomings?.filter(upcome => upcome.is_national_holiday)
@@ -14,13 +15,12 @@ const UpcomingHolidays: React.FC<{ upcomings: APIResult[] }> = ({ upcomings }) =
         </Card>
       )}
       {filteredHolidays?.map(holiday => (
-        <Card key={holiday.holiday_date} css={{ color: isAfterEvent(holiday.holiday_date) ? '$gray11' : '$gray12' }}>
-          <CardSider>
-            <DateDay>{toDateDay(holiday.holiday_date)}</DateDay>
-            <DateNumber>{toDateNumber(holiday.holiday_date)}</DateNumber>
-          </CardSider>
-          <CardBody>{holiday.holiday_name}</CardBody>
-        </Card>
+        <CardPreview
+          key={holiday.holiday_date}
+          holidayDate={holiday.holiday_date}
+          holidayName={holiday.holiday_name}
+          css={{ color: isAfterEvent(holiday.holiday_date) ? '$gray11' : '$gray12' }}
+        />
       ))}
     </GridWrapper>
   )
