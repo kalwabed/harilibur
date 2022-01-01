@@ -24,7 +24,11 @@ const AllHolidays = ({ holidays, header }: { holidays: APIResult[]; header: stri
   return (
     <GridWrapper css={{ margin: '2rem auto' }}>
       <SectionHeader>{header}</SectionHeader>
-      {Object.keys(holidayResult).length === 0 && <NotAvailable>Data hari libur belum tersedia.</NotAvailable>}
+      {Object.keys(holidayResult).length === 0 && (
+        <NotAvailable>
+          Data hari libur belum tersedia. Kalau sudah ada nanti juga akan mengisi kekosongan ini dengan sendirinya 😉
+        </NotAvailable>
+      )}
 
       {Object.keys(holidayResult)?.map((month, index) => {
         return (
