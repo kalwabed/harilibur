@@ -9,7 +9,7 @@ const Container = styled('main', {
   justifyContent: 'center'
 })
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Container>{children}</Container>
